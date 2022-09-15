@@ -36,10 +36,19 @@
                 Créer 2 étudiants différents.
             </p>
             <div class="exercice-sandbox">
-                
+                <?php
+
+                    require_once "exos/exo1.php";
+
+                    $student1 = new Student1_1("Marco","Polo", 25, 15);
+                    $student2 = new Student1_1("Vasco","De Gama", 22, 12);
+
+                    var_dump($student1, $student2);
+
+                ?>
             </div>
         </section>
-        
+
         <!-- QUESTION 2 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 2</h2>
@@ -49,10 +58,21 @@
                 Modifier le niveau scolaire des 2 élèves et les afficher.
             </p>
             <div class="exercice-sandbox">
-                
+
+            <?php
+                $student1 = new Student1_2("Marco","Polo", 25, "Bac Pro");
+                $student2 = new Student1_2("Vasco","De Gama", 22, "Bac Commercial");
+
+                $student1->setLevel(19);
+                $student2->setLevel(17);
+
+                var_dump($student1->getLevel(), $student2->getLevel());
+
+            ?>
+
             </div>
         </section>
-        
+
         <!-- QUESTION 3 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 3</h2>
@@ -62,10 +82,17 @@
                 Mettez à jour l'instanciation des 2 élèves et afficher leur date de naissance.
             </p>
             <div class="exercice-sandbox">
-                
+
+            <?php
+                $student1 = new Student1_3("Marco","Polo",new DateTime( "1995-09-12"), "Bac Pro");
+                $student2 = new Student1_3("Vasco","De Gama",  new DateTime("1997-03-02"), "Bac Commercial");
+
+                var_dump($student1->getBirthday(), $student2->getBirthday());
+            ?>
+
             </div>
         </section>
-        
+
         <!-- QUESTION 4 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 4</h2>
@@ -75,10 +102,28 @@
                 Afficher l'âge des 2 élèves.
             </p>
             <div class="exercice-sandbox">
-                
+
+            <?php
+                $student1 = new Student1_4("Marco","Polo",new DateTime( "1995-09-12"), "Bac Pro");
+                $student2 = new Student1_4("Vasco","De Gama",  new DateTime("1997-03-02"), "Bac Commercial");
+
+                $now = date('Y');
+                $student1->setBirthday(new DateTime("1995-08-01"));
+                $student2->setBirthday(new DateTime("1994-04-15"));
+
+                $birthday1 = $student1->getBirthday();
+                $birthday2 = $student2->getBirthday();
+
+                $student1->setAge($birthday1, $now);
+                $student2->setAge($birthday2, $now);
+
+                var_dump($student1, $student2);
+
+            ?>
+
             </div>
         </section>
-        
+
         <!-- QUESTION 5 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 5</h2>
@@ -88,21 +133,63 @@
                 Ajouter la propriété et ajouter la donnée sur les élèves.
             </p>
             <div class="exercice-sandbox">
-                
+
+            <?php
+
+                $student1 = new Student1_5("Marco","Polo",new DateTime( "1995-09-12"), "Bac Pro");
+                $student2 = new Student1_5("Vasco","De Gama",  new DateTime("1997-03-02"), "Bac Commercial");
+
+                $now = date('Y');
+                $student1->setBirthday(new DateTime("1995-08-01"));
+                $student1->setSchoolName("Saint Joseph");
+                $student2->setBirthday(new DateTime("1994-04-15"));
+                $student2->setSchoolName("François 1er");
+
+                $birthday1 = $student1->getBirthday();
+                $birthday2 = $student2->getBirthday();
+
+                $student1->setAge($birthday1, $now);
+                $student2->setAge($birthday2, $now);
+
+                var_dump($student1, $student2);
+
+            ?>
+
             </div>
         </section>
-        
+
         <!-- QUESTION 6 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 6</h2>
             <p class="exercice-txt">
                 Donner la possibilité aux élèves de se présenter en affichant la phrase suivante :<br>
-                "Bonjour, je m'appelle XXX XXX, j'ai XX ans et je vais à l'école XXX en class de XXX.".
+                "Bonjour, je m'appelle XXX XXX, j'ai XX ans et je vais à l'école XXX en classe de XXX.".
                 <br>
                 Afficher la phrase de présentation des 2 élèves.
             </p>
             <div class="exercice-sandbox">
-                
+
+            <?php
+
+                $student1 = new Student1_6("Marco","Polo",new DateTime( "1995-09-12"), "Bac Pro");
+                $student2 = new Student1_6("Vasco","De Gama",  new DateTime("1997-03-02"), "Bac Commercial");
+
+                $now = date('Y');
+                $student1->setBirthday(new DateTime("1995-08-01"));
+                $student1->setSchoolName("Saint Joseph");
+                $student2->setBirthday(new DateTime("1994-04-15"));
+                $student2->setSchoolName("François 1er");
+
+                $birthday1 = $student1->getBirthday();
+                $birthday2 = $student2->getBirthday();
+
+                $student1->setAge($now, $birthday1);
+                $student2->setAge($now, $birthday2);
+
+                echo $student1->setPresentation() . $student2->setPresentation();
+
+            ?>
+
             </div>
         </section>
 
