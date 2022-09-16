@@ -62,15 +62,15 @@
                     $teacher1 = new Teacher2_2("Lavanant", "Clément");
                     $teacher2 = new Teacher2_2("Persy", "Damien");
 
-                    $teacher1->setSubject[] = "English";
-                    $teacher2->setSubject[] = "Geography";
+                    $teacher1->setSchoolName("Saint Rose");
+                    $teacher2->setSchoolName("Saint Joseph");
 
-                    var_dump($teacher1->getSubject(),$teacher2->getSubject());
+                    echo $teacher1->getLastName()." : ".$teacher1->getSchoolName()."<br>".$teacher2->getLastName()." : ".$teacher2->getSchoolName();
                 ?>
             </div>
         </section>
-        
-        
+
+
         <!-- QUESTION 3 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 3</h2>
@@ -80,7 +80,26 @@
                 Tester l'ajout, la suppression et l'affichage sur chacun des profs.
             </p>
             <div class="exercice-sandbox">
-                
+                <?php
+
+                $teacher1 = new Teacher2_3("Lavanant", "Clément");
+                $teacher2 = new Teacher2_3("Persy", "Damien");
+
+                $teacher1->setSchoolName("Saint Rose");
+                $teacher2->setSchoolName("Saint Joseph");
+
+                $teacher1->subjects[] = "anglais";
+                $teacher1->subjects[] = "histoire";
+                $teacher2->subjects[] = "français";
+                $teacher2->subjects[] = "géographie";
+                $teacher2->subjects[] = "mathématiques";
+
+                /* suppression  et vérification pour teacher1 */
+                unset($teacher1);
+                if(!isset($teacher1) || !isset($teacher2)){ echo "Ce professeur n'existe pas !"; }
+
+
+                ?>
             </div>
         </section>
 
