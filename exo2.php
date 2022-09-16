@@ -24,7 +24,7 @@
                 </ul>
             </nav>
         </header>
-        
+
         <!-- QUESTION 1 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 1</h2>
@@ -36,11 +36,17 @@
                 Créer 2 professeurs différents.
             </p>
             <div class="exercice-sandbox">
-                
+                <?php
+                    require_once "exos/exo2.php";
+                    $teacher1 = new Teacher2_1("Lavanant", "Clément");
+                    $teacher2 = new Teacher2_1("Persy", "Damien");
+
+                    var_dump($teacher1,$teacher2);
+                ?>
             </div>
         </section>
-        
-        
+
+
         <!-- QUESTION 2 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 2</h2>
@@ -52,7 +58,15 @@
                 Afficher les écoles des 2 professeurs.
             </p>
             <div class="exercice-sandbox">
-                
+            <?php
+                    $teacher1 = new Teacher2_2("Lavanant", "Clément");
+                    $teacher2 = new Teacher2_2("Persy", "Damien");
+
+                    $teacher1->setSubject[] = "English";
+                    $teacher2->setSubject[] = "Geography";
+
+                    var_dump($teacher1->getSubject(),$teacher2->getSubject());
+                ?>
             </div>
         </section>
         

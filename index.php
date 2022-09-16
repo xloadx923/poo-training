@@ -40,8 +40,8 @@
 
                     require_once "exos/exo1.php";
 
-                    $student1 = new Student1_1("Marco","Polo", 25, 15);
-                    $student2 = new Student1_1("Vasco","De Gama", 22, 12);
+                    $student1 = new Student1_1("Polo", "Marco", 25, "Bac Pro");
+                    $student2 = new Student1_1("De Gama", "Vasco", 22, "Bac Commercial");
 
                     var_dump($student1, $student2);
 
@@ -60,13 +60,13 @@
             <div class="exercice-sandbox">
 
             <?php
-                $student1 = new Student1_2("Marco","Polo", 25, "Bac Pro");
-                $student2 = new Student1_2("Vasco","De Gama", 22, "Bac Commercial");
+                $student1 = new Student1_2("Polo", "Marco", 25, "Bac Pro");
+                $student2 = new Student1_2("De Gama", "Vasco",  22, "Bac Commercial");
 
-                $student1->setLevel(19);
-                $student2->setLevel(17);
+                $student1->setGrade("Terminale");
+                $student2->setGrade("Prépa");
 
-                var_dump($student1->getLevel(), $student2->getLevel());
+                echo $student1->getGrade()."<br>".$student2->getGrade();
 
             ?>
 
@@ -84,10 +84,10 @@
             <div class="exercice-sandbox">
 
             <?php
-                $student1 = new Student1_3("Marco","Polo",new DateTime( "1995-09-12"), "Bac Pro");
-                $student2 = new Student1_3("Vasco","De Gama",  new DateTime("1997-03-02"), "Bac Commercial");
+                $student1 = new Student1_3("Polo", "Marco",new DateTime( "1995-09-12"), "Bac Pro");
+                $student2 = new Student1_3("De Gama", "Vasco",  new DateTime("1997-03-02"), "Bac Commercial");
 
-                var_dump($student1->getBirthday(), $student2->getBirthday());
+                echo $student1->getFirstName()." : ".$student1->getGrade()."<br>".$student2->getFirstName()." : ".$student2->getGrade();
             ?>
 
             </div>
@@ -104,8 +104,8 @@
             <div class="exercice-sandbox">
 
             <?php
-                $student1 = new Student1_4("Marco","Polo",new DateTime( "1995-09-12"), "Bac Pro");
-                $student2 = new Student1_4("Vasco","De Gama",  new DateTime("1997-03-02"), "Bac Commercial");
+                $student1 = new Student1_4("Polo", "Marco",new DateTime( "1995-09-12"), "Bac Pro");
+                $student2 = new Student1_4("De Gama", "Vasco",  new DateTime("1997-03-02"), "Bac Commercial");
 
                 $now = date('Y');
                 $student1->setBirthday(new DateTime("1995-08-01"));
@@ -117,7 +117,7 @@
                 $student1->setAge($birthday1, $now);
                 $student2->setAge($birthday2, $now);
 
-                var_dump($student1, $student2);
+                echo $student1->getFirstName()." : ".$student1->getAge()."<br>".$student2->getFirstName()." : ".$student2->getAge();
 
             ?>
 
@@ -135,9 +135,8 @@
             <div class="exercice-sandbox">
 
             <?php
-
-                $student1 = new Student1_5("Marco","Polo",new DateTime( "1995-09-12"), "Bac Pro");
-                $student2 = new Student1_5("Vasco","De Gama",  new DateTime("1997-03-02"), "Bac Commercial");
+                $student1 = new Student1_5("Polo", "Marco",new DateTime( "1995-09-12"), "Bac Pro");
+                $student2 = new Student1_5("De Gama", "Vasco",  new DateTime("1997-03-02"), "Bac Commercial");
 
                 $now = date('Y');
                 $student1->setBirthday(new DateTime("1995-08-01"));
@@ -170,9 +169,8 @@
             <div class="exercice-sandbox">
 
             <?php
-
-                $student1 = new Student1_6("Marco","Polo",new DateTime( "1995-09-12"), "Bac Pro");
-                $student2 = new Student1_6("Vasco","De Gama",  new DateTime("1997-03-02"), "Bac Commercial");
+                $student1 = new Student1_6("Polo", "Marco",new DateTime( "1995-09-12"), "Bac Pro");
+                $student2 = new Student1_6("De Gama", "Vasco",  new DateTime("1997-03-02"), "Bac Commercial");
 
                 $now = date('Y');
                 $student1->setBirthday(new DateTime("1995-08-01"));
@@ -186,7 +184,7 @@
                 $student1->setAge($now, $birthday1);
                 $student2->setAge($now, $birthday2);
 
-                echo $student1->setPresentation() . $student2->setPresentation();
+                echo $student1->showPresentation() . $student2->showPresentation();
 
             ?>
 
