@@ -18,13 +18,8 @@ class Teacher extends Student{
     }
 
     public function getLastName():string                { return $this->lastname; }
-    public function setLastNameFromTeacher(string $lastname)       { $this->lastname = $lastname; }
-
     public function getFirstName():string               { return $this->firstname; }
-    public function setFirstNameFromTeacher(string $firstname)     { $this->firstname = $firstname; }
-
     public function getSchoolName():string              { return $this->schoolname; }
-    public function setSchoolNameFromTeacher(string $schoolname)   { $this->schoolname = $schoolname; }
 
     public function getSubjectsToString():string        { return implode(", ", $this->getSubjects()); }
     public function getSubjects():array { return $this->subjects; }
