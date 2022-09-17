@@ -1,3 +1,11 @@
+<?php
+
+require 'App/Autoloader.php';
+
+\Infos\Autoloader::register();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,9 +45,9 @@
             </p>
             <div class="exercice-sandbox">
                 <?php
-                    require_once "exos/exo2.php";
-                    $teacher1 = new Teacher2_1("Lavanant", "Clément");
-                    $teacher2 = new Teacher2_1("Persy", "Damien");
+
+                    $teacher1 = new \Infos\Teacher("Lavanant", "Clément");
+                    $teacher2 = new \Infos\Teacher("Persy", "Damien");
 
                     var_dump($teacher1,$teacher2);
                 ?>
@@ -59,14 +67,15 @@
             </p>
             <div class="exercice-sandbox">
             <?php
-                    $teacher1 = new Teacher2_2("Lavanant", "Clément");
-                    $teacher2 = new Teacher2_2("Persy", "Damien");
 
-                    $teacher1->setSchoolName("Saint Rose");
-                    $teacher2->setSchoolName("Saint Joseph");
+                $teacher1 = new \Infos\Teacher("Lavanant", "Clément");
+                $teacher2 = new \Infos\Teacher("Persy", "Damien");
 
-                    echo $teacher1->getLastName()." : ".$teacher1->getSchoolName()."<br>".$teacher2->getLastName()." : ".$teacher2->getSchoolName();
-                ?>
+                $teacher1->setSchoolName("Saint Rose");
+                $teacher2->setSchoolName("Saint Joseph");
+
+                echo $teacher1->getLastName()." : ".$teacher1->getSchoolName()."<br>".$teacher2->getLastName()." : ".$teacher2->getSchoolName();
+            ?>
             </div>
         </section>
 
@@ -82,22 +91,19 @@
             <div class="exercice-sandbox">
                 <?php
 
-                $teacher1 = new Teacher2_3("Lavanant", "Clément");
-                $teacher2 = new Teacher2_3("Persy", "Damien");
+                $teacher1 = new \Infos\Teacher("Lavanant", "Clément");
+                $teacher2 = new \Infos\Teacher("Persy", "Damien");
 
                 $teacher1->setSchoolName("Saint Rose");
                 $teacher2->setSchoolName("Saint Joseph");
 
-                $teacher1->subjects[] = "anglais";
-                $teacher1->subjects[] = "histoire";
-                $teacher2->subjects[] = "français";
-                $teacher2->subjects[] = "géographie";
-                $teacher2->subjects[] = "mathématiques";
+                $teacher1->addSubject("anglais");
+                $teacher1->addSubject("histoire");
+                $teacher2->addSubject("français");
+                $teacher2->addSubject("géographie");
+                $teacher2->addSubject("mathématiques");
 
-                /* suppression  et vérification pour teacher1 */
-                unset($teacher1);
-                if(!isset($teacher1) || !isset($teacher2)){ echo "Ce professeur n'existe pas !"; }
-
+                var_dump($teacher1, $teacher2);
 
                 ?>
             </div>
@@ -114,7 +120,17 @@
                 Afficher la phrase de présentation des 2 profs.
             </p>
             <div class="exercice-sandbox">
-                
+                <?php
+
+                /* suppression  et vérification pour teacher1 */
+                //unset($teacher1);
+                if(!isset($teacher1)){ echo "Le professeur 1 n'existe pas !<br>"; }
+                else{ echo $teacher1->showPresentation()."<br>"; }
+
+                if(!isset($teacher2)){ echo "Le professeur 2 n'existe pas !<br>"; }
+                else{ echo $teacher2->showPresentation()."<br>"; }
+
+                ?>
             </div>
         </section>
 

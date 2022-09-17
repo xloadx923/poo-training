@@ -173,7 +173,7 @@ class Student1_6{
     public function setSchoolName($schoolname)  { $this->schoolname = $schoolname; }
 
     public function getPresentation():string      { return self::$presentation; }
-    public function setPresentation($presentation)  { self::$presentation = $presentation; }
+    public function setPresentation($presentation){ self::$presentation = $presentation; }
 
     public function showPresentation():string {
         $search =[
