@@ -112,19 +112,7 @@ require 'App/Autoloader.php';
             <div class="exercice-sandbox">
             <?php
 
-                function filteredBySchool(array $merging, string $search, string $key):array {
-                    $returnmap = [];
-                    foreach ($merging as $school){
-                        $map = array_filter(array_values($school['grades']),fn($s)=>$s == $search);
-                        if(!empty($map)){
-                            $returnmap = $map;
-                            $returnmap[] = $school[$key];
-                            return $returnmap;
-                        }
-                    }
-                }
-
-                var_dump(filteredBySchool($allSchools, 'première', 'schoolname'));
+                var_dump(\Infos\Functions::filteredBySchool($allSchools, 'première', 'schoolname'));
 
             ?>
             </div>

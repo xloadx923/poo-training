@@ -9,10 +9,8 @@ class Autoloader{
     }
 
     static function autoload($class){
-        // var_dump($class);
         $class = str_replace('Infos\\','',$class);
         $class = str_replace('\\','/',$class);
-        // var_dump($class);
 
         require 'App/Objects/'.$class.'.php';
     }
