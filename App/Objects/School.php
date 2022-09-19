@@ -1,6 +1,6 @@
 <?php
 
-namespace Infos;
+namespace App\Objects;
 
 class School extends Student{
 

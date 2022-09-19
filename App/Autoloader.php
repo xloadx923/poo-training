@@ -12,7 +12,7 @@ class Autoloader{
         $class = str_replace('Infos\\','',$class);
         $class = str_replace('\\','/',$class);
 
-        require 'App/Objects/'.$class.'.php';
+        require_once 'App/Objects/'.$class.'.php';
     }
 }
 

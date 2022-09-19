@@ -1,8 +1,10 @@
 <?php
 
-require 'App/Autoloader.php';
+// require 'App/Autoloader.php';
+// \Infos\Autoloader::register();
+spl_autoload_register();
+use App\Objects\Student;
 
-\Infos\Autoloader::register();
 
 ?>
 
@@ -32,7 +34,7 @@ require 'App/Autoloader.php';
                 </ul>
             </nav>
         </header>
-        
+
         <!-- QUESTION 1 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 1</h2>
@@ -46,8 +48,8 @@ require 'App/Autoloader.php';
             <div class="exercice-sandbox">
                 <?php
 
-                    $student1 = new \Infos\Student1_1("Polo", "Marco", 25, "Bac Pro");
-                    $student2 = new \Infos\Student1_1("De Gama", "Vasco", 22, "Bac Commercial");
+                    $student1 = new App\Objects\Student1_1("Polo", "Marco", 25, "Bac Pro");
+                    $student2 = new App\Objects\Student1_1("De Gama", "Vasco", 22, "Bac Commercial");
 
                     var_dump($student1, $student2);
 
@@ -66,8 +68,8 @@ require 'App/Autoloader.php';
             <div class="exercice-sandbox">
 
             <?php
-                $student1 = new \Infos\Student1_2("Polo", "Marco", 25, "Bac Pro");
-                $student2 = new \Infos\Student1_2("De Gama", "Vasco",  22, "Bac Commercial");
+                $student1 = new App\Objects\Student1_2("Polo", "Marco", 25, "Bac Pro");
+                $student2 = new App\Objects\Student1_2("De Gama", "Vasco",  22, "Bac Commercial");
 
                 $student1->setGrade("Terminale");
                 $student2->setGrade("Prépa");
@@ -90,8 +92,8 @@ require 'App/Autoloader.php';
             <div class="exercice-sandbox">
 
             <?php
-                $student1 = new \Infos\Student("Polo", "Marco",new DateTime( "1995-09-12"), "Bac Pro");
-                $student2 = new \Infos\Student("De Gama", "Vasco",  new DateTime("1997-03-02"), "Bac Commercial");
+                $student1 = new Student("Polo", "Marco",new DateTime( "1995-09-12"), "Bac Pro");
+                $student2 = new Student("De Gama", "Vasco",  new DateTime("1997-03-02"), "Bac Commercial");
 
                 echo $student1->getFirstName()." : ".$student1->getGrade()."<br>".$student2->getFirstName()." : ".$student2->getGrade();
             ?>
@@ -110,8 +112,8 @@ require 'App/Autoloader.php';
             <div class="exercice-sandbox">
 
             <?php
-                $student1 = new \Infos\Student("Polo", "Marco",new DateTime( "1995-09-12"), "Bac Pro");
-                $student2 = new \Infos\Student("De Gama", "Vasco",  new DateTime("1997-03-02"), "Bac Commercial");
+                $student1 = new Student("Polo", "Marco",new DateTime( "1995-09-12"), "Bac Pro");
+                $student2 = new Student("De Gama", "Vasco",  new DateTime("1997-03-02"), "Bac Commercial");
 
                 $now = new DateTime();
                 $student1->setBirthday(new DateTime("1995-08-01"));
@@ -142,8 +144,8 @@ require 'App/Autoloader.php';
             <div class="exercice-sandbox">
 
             <?php
-                $student1 = new \Infos\Student("Polo", "Marco",new DateTime( "1995-09-12"), "Bac Pro");
-                $student2 = new \Infos\Student("De Gama", "Vasco",  new DateTime("1997-03-02"), "Bac Commercial");
+                $student1 = new App\Objects\Student("Polo", "Marco",new DateTime( "1995-09-12"), "Bac Pro");
+                $student2 = new App\Objects\Student("De Gama", "Vasco",  new DateTime("1997-03-02"), "Bac Commercial");
 
                 $now = new DateTime();
                 $student1->setBirthday(new DateTime("1995-08-01"));
@@ -176,8 +178,8 @@ require 'App/Autoloader.php';
             <div class="exercice-sandbox">
 
             <?php
-                $student1 = new \Infos\Student("Polo", "Marco",new DateTime( "1995-09-12"), "Bac Pro");
-                $student2 = new \Infos\Student("De Gama", "Vasco",  new DateTime("1997-03-02"), "Bac Commercial");
+                $student1 = new Student("Polo", "Marco",new DateTime( "1995-09-12"), "Bac Pro");
+                $student2 = new Student("De Gama", "Vasco",  new DateTime("1997-03-02"), "Bac Commercial");
 
                 $now = new DateTime();
                 $student1->setBirthday(new DateTime("1995-08-01"));
