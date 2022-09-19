@@ -46,7 +46,7 @@ abstract class Person{
     public function getFirstname():string { return $this->firstname; }
     public function setFirstname(string $firstname):void { $this->firstname = $firstname;  }
 
-    // public function getSchool():string { return $this->school; }
-    // public function setSchool(string $school):void { $this->school = $school; }
+    public function getSchool():string { return $this->school; }
+    public function setSchool(string $school):void { $this->school = $school; }
 
 }

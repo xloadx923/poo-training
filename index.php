@@ -4,8 +4,9 @@
 // \Infos\Autoloader::register();
 spl_autoload_register();
 use App\Objects\Student;
-use App\Objects\School;
-
+use App\Objects\Primary;
+use App\Objects\College;
+use App\Objects\HighSchool;
 
 ?>
 
@@ -169,8 +170,6 @@ use App\Objects\School;
             <?php
                 $student1 = new Student("Polo", "Marco",new DateTime( "1995-09-12"), "Bac Pro");
                 $student2 = new Student("De Gama", "Vasco",  new DateTime("1997-03-02"), "Bac Commercial");
-                $student1->setSchool("");
-                $school2 = new School();
 
                 $now = new DateTime();
                 $student1->setBirthday(new DateTime("1995-08-01"));
