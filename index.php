@@ -4,6 +4,7 @@
 // \Infos\Autoloader::register();
 spl_autoload_register();
 use App\Objects\Student;
+use App\Objects\School;
 
 
 ?>
@@ -112,8 +113,6 @@ use App\Objects\Student;
             <div class="exercice-sandbox">
 
             <?php
-                $student1 = new Student("Polo", "Marco",new DateTime( "1995-09-12"), "Bac Pro");
-                $student2 = new Student("De Gama", "Vasco",  new DateTime("1997-03-02"), "Bac Commercial");
 
                 $now = new DateTime();
                 $student1->setBirthday(new DateTime("1995-08-01"));
@@ -144,22 +143,12 @@ use App\Objects\Student;
             <div class="exercice-sandbox">
 
             <?php
-                $student1 = new App\Objects\Student("Polo", "Marco",new DateTime( "1995-09-12"), "Bac Pro");
-                $student2 = new App\Objects\Student("De Gama", "Vasco",  new DateTime("1997-03-02"), "Bac Commercial");
 
-                $now = new DateTime();
-                $student1->setBirthday(new DateTime("1995-08-01"));
-                $student1->setSchoolName("Saint Joseph");
-                $student2->setBirthday(new DateTime("1994-04-15"));
-                $student2->setSchoolName("François 1er");
+            $student1->setSchool("Saint Joseph");
+            $student2->setSchool("François 1er");
 
-                $birthday1 = $student1->getBirthday();
-                $birthday2 = $student2->getBirthday();
-
-                $student1->setBirthAge($birthday1, $now);
-                $student2->setBirthAge($birthday2, $now);
-
-                var_dump($student1, $student2);
+            echo $student1->getFirstname()." : ".$student1->getSchool()."<br>";
+            echo $student2->getFirstname()." : ".$student2->getSchool()."<br>";
 
             ?>
 
@@ -180,18 +169,20 @@ use App\Objects\Student;
             <?php
                 $student1 = new Student("Polo", "Marco",new DateTime( "1995-09-12"), "Bac Pro");
                 $student2 = new Student("De Gama", "Vasco",  new DateTime("1997-03-02"), "Bac Commercial");
+                $student1->setSchool("");
+                $school2 = new School();
 
                 $now = new DateTime();
                 $student1->setBirthday(new DateTime("1995-08-01"));
-                $student1->setSchoolName("Saint Joseph");
                 $student2->setBirthday(new DateTime("1994-04-15"));
-                $student2->setSchoolName("François 1er");
 
                 $birthday1 = $student1->getBirthday();
                 $birthday2 = $student2->getBirthday();
 
                 $student1->setBirthAge($birthday1, $now);
                 $student2->setBirthAge($birthday2, $now);
+
+                Student::setIntroduction("Bonjour, je m'appelle ##lastname## ##firstname##, j'ai ##age## ans et je vais à l'école ##school## en classe de ##grade##.<br/>");
 
                 echo $student1->showPresentation() . $student2->showPresentation();
 

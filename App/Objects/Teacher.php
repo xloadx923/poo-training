@@ -2,24 +2,24 @@
 
 namespace App\Objects;
 
-class Teacher extends Student{
+class Teacher extends Person{
 
     public string $lastname;
     public string $firstname;
-    public string $schoolname;
+    public string $school;
     public array $subjects;
-    private static string $presentation = "Bonjour, je m'appelle _lastname_ _firstname_ et j'enseigne à l'école _school_ les matières suivantes : _subject_.";
+    protected static string $presentation = "Bonjour, je m'appelle ##lastname## ##firstname## et j'enseigne à l'école ##school## les matières suivantes : ##subject##.";
 
-    public function __construct(string $lastname, string $firstname, array $subjects = [], $schoolname = "") {
+    public function __construct(string $lastname, string $firstname, array $subjects = [], $school = "") {
+        parent::__construct($lastname, $firstname, $school);
         $this->lastname = $lastname;
         $this->firstname = $firstname;
         $this->subjects = $subjects;
-        $this->schoolname = $schoolname;
+        $this->school = $school;
     }
 
     public function getLastName():string                { return $this->lastname; }
     public function getFirstName():string               { return $this->firstname; }
-    public function getSchoolName():string              { return $this->schoolname; }
 
     public function getSubjectsToString():string        { return implode(", ", $this->getSubjects()); }
     public function getSubjects():array { return $this->subjects; }
@@ -31,21 +31,14 @@ class Teacher extends Student{
         unset($this->subjects[array_search($subject, $this->subjects)]);
     }
 
-    public function getPresentation():string            { return self::$presentation; }
-    public function setPresentation($presentation)      { self::$presentation = $presentation; }
-
     public function showPresentation():string {
-        $search =[
-            "_lastname_"  => $this->getLastName(),
-            "_firstname_" => $this->getFirstName(),
-            "_school_"    => $this->getSchoolName(),
-            "_subject_"   => $this->getSubjectsToString()
-        ];
-        return preg_replace(
-            array_map(fn($s)=>"/$s/", array_keys($search)),
-            array_values($search),
-            self::getPresentation() );
-        }
+        return self::buildIntroduction([
+            "lastname"  => $this->getLastName(),
+            "firstname" => $this->getFirstName(),
+            "school"    => $this->getSchool(),
+            "subject"   => $this->getSubjectsToString()
+        ]);
+    }
 }
 
 ?>

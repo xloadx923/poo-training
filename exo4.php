@@ -1,14 +1,8 @@
 <?php
 
-// require 'App/Autoloader.php';
-// \Infos\Autoloader::register();
 spl_autoload_register();
 use App\Objects\Student;
 use App\Objects\School;
-use App\Objects\Primary;
-use App\Objects\College;
-use App\Objects\HighSchool;
-use App\Objects\Functions;
 
 ?>
 
@@ -51,10 +45,10 @@ use App\Objects\Functions;
             <?php
 
                 $school = new School();
-                $school->setSchoolName("Les Ormeaux");
+                $school->setSchool("Les Ormeaux");
                 $school->setCity("Le Havre");
 
-                echo "L'école \" ".$school->getSchoolName()." \" est située dans la ville suivante : ".$school->getCity();
+                echo "L'école \" ".$school->getSchool()." \" est située dans la ville suivante : ".$school->getCity();
 
             ?>
             </div>
@@ -74,28 +68,28 @@ use App\Objects\Functions;
             <div class="exercice-sandbox">
             <?php
 
-                $primary = new Primary();
+                $primary = new School();
 
                 $primary->setCity('Le Havre');
-                $primary->setSchoolName('Jehan De Grouchy');
+                $primary->setSchool('Jehan De Grouchy');
                 $primary->setGrades('CP');
                 $primary->setGrades('CE1');
                 $primary->setGrades('CM1');
                 $primary->setGrades('CM2');
 
-                $college = new College();
+                $college = new School();
 
                 $college->setCity('Le Havre');
-                $college->setSchoolName('Les Ormeaux');
+                $college->setSchool('Les Ormeaux');
                 $college->setGrades('sixième');
                 $college->setGrades('cinquième');
                 $college->setGrades('quatrième');
                 $college->setGrades('troisème');
 
-                $highSchool = new HighSchool();
+                $highSchool = new School();
 
                 $highSchool->setCity('Le Havre');
-                $highSchool->setSchoolName('Claude Monet');
+                $highSchool->setSchool('Claude Monet');
                 $highSchool->setGrades('seconde');
                 $highSchool->setGrades('première');
                 $highSchool->setGrades('terminale');
@@ -118,8 +112,7 @@ use App\Objects\Functions;
             <div class="exercice-sandbox">
             <?php
 
-                $functions = new Functions();
-                var_dump($functions->filteredBySchool($allSchools, 'première', 'schoolname'));
+                var_dump(School::filteredBySchool($allSchools, 'première', 'school'));
 
             ?>
             </div>
