@@ -2,7 +2,7 @@
 
 namespace App\Objects;
 
-abstract class Person extends School{
+abstract class Person{
     // --------------------------
     // Statics
     // --------------------------
@@ -30,6 +30,7 @@ abstract class Person extends School{
     // --------------------------
     private string $lastname;
     private string $firstname;
+    // private string $school;
 
     public function __construct(string $firstname, string $lastname, string $school) {
         $this->firstname = $firstname;
@@ -39,18 +40,13 @@ abstract class Person extends School{
 
     // Getters and Setters
 
-    public function getLastname():string {
-        return $this->lastname;
-    }
-    public function setLastname(string $lastname):void {
-        $this->lastname = $lastname;
-    }
+    public function getLastname():string { return $this->lastname; }
+    public function setLastname(string $lastname):void { $this->lastname = $lastname; }
 
-    public function getFirstname():string {
-        return $this->firstname;
-    }
-    public function setFirstname(string $firstname):void {
-        $this->firstname = $firstname;
-    }
+    public function getFirstname():string { return $this->firstname; }
+    public function setFirstname(string $firstname):void { $this->firstname = $firstname;  }
+
+    // public function getSchool():string { return $this->school; }
+    // public function setSchool(string $school):void { $this->school = $school; }
 
 }

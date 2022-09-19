@@ -2,7 +2,9 @@
 
 spl_autoload_register();
 use App\Objects\Student;
-use App\Objects\School;
+use App\Objects\Primary;
+use App\Objects\College;
+use App\Objects\HighSchool;
 
 ?>
 
@@ -44,7 +46,7 @@ use App\Objects\School;
             <div class="exercice-sandbox">
             <?php
 
-                $school = new School();
+                $school = new HighSchool();
                 $school->setSchool("Les Ormeaux");
                 $school->setCity("Le Havre");
 
@@ -68,7 +70,7 @@ use App\Objects\School;
             <div class="exercice-sandbox">
             <?php
 
-                $primary = new School();
+                $primary = new Primary();
 
                 $primary->setCity('Le Havre');
                 $primary->setSchool('Jehan De Grouchy');
@@ -77,7 +79,7 @@ use App\Objects\School;
                 $primary->setGrades('CM1');
                 $primary->setGrades('CM2');
 
-                $college = new School();
+                $college = new College();
 
                 $college->setCity('Le Havre');
                 $college->setSchool('Les Ormeaux');
@@ -85,8 +87,9 @@ use App\Objects\School;
                 $college->setGrades('cinquième');
                 $college->setGrades('quatrième');
                 $college->setGrades('troisème');
+                $college->setGrades('première');
 
-                $highSchool = new School();
+                $highSchool = new HighSchool();
 
                 $highSchool->setCity('Le Havre');
                 $highSchool->setSchool('Claude Monet');
@@ -94,8 +97,6 @@ use App\Objects\School;
                 $highSchool->setGrades('première');
                 $highSchool->setGrades('terminale');
 
-                $allSchools = [(array) $primary, (array) $college, (array) $highSchool];
-                var_dump($allSchools);
             ?>
             </div>
         </section>
@@ -105,14 +106,26 @@ use App\Objects\School;
         <section class="exercice">
             <h2 class="exercice-ttl">Question 3</h2>
             <p class="exercice-txt">
-                Créer une méthode permettant d'interroger un type d'école pour savoir s'il prend en charge un niveu scolaire.
+                Créer une méthode permettant d'interroger un type d'école pour savoir s'il prend en charge un niveau scolaire.
                 <br>
                 Tester la méthode créée.
             </p>
             <div class="exercice-sandbox">
             <?php
+                $classe = "première";
+                $findSchool = [];
 
-                echo "On trouve la classe de ".implode(" dans l'école ",(School::filteredBySchool($allSchools, 'première', 'school')));
+                if(!empty($primary->filteredBySchool($primary->getGrades(), $classe))){
+                    $findSchool [] = $primary->getSchool();
+                }
+                if(!empty($college->filteredBySchool($college->getGrades(), $classe))){
+                    $findSchool [] = $college->getSchool();
+                }
+                if(!empty($highSchool->filteredBySchool($highSchool->getGrades(), $classe))){
+                    $findSchool [] = $highSchool->getSchool();
+                }
+
+                echo "On trouve la classe de $classe dans les écoles suivantes : ".implode(", ", $findSchool);
 
             ?>
             </div>
