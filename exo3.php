@@ -74,7 +74,7 @@ use App\Objects\Student;
 
                 $now = new DateTime();
                 $student->setBirthday(new DateTime("1997-08-01"));
-                $student->setSchoolName("François 1er");
+                $student->setSchool("François 1er");
 
                 $birthday = $student->getBirthday();
                 $student->setBirthAge($birthday, $now);

@@ -1,14 +1,10 @@
 <?php
 
-// require 'App/Autoloader.php';
-// \Infos\Autoloader::register();
 spl_autoload_register();
 use App\Objects\Student;
-use App\Objects\School;
 use App\Objects\Primary;
 use App\Objects\College;
 use App\Objects\HighSchool;
-use App\Objects\Functions;
 
 ?>
 
@@ -50,11 +46,11 @@ use App\Objects\Functions;
             <div class="exercice-sandbox">
             <?php
 
-                $school = new School();
-                $school->setSchoolName("Les Ormeaux");
+                $school = new HighSchool();
+                $school->setSchool("Les Ormeaux");
                 $school->setCity("Le Havre");
 
-                echo "L'école \" ".$school->getSchoolName()." \" est située dans la ville suivante : ".$school->getCity();
+                echo "L'école \" ".$school->getSchool()." \" est située dans la ville suivante : ".$school->getCity();
 
             ?>
             </div>
@@ -77,7 +73,7 @@ use App\Objects\Functions;
                 $primary = new Primary();
 
                 $primary->setCity('Le Havre');
-                $primary->setSchoolName('Jehan De Grouchy');
+                $primary->setSchool('Jehan De Grouchy');
                 $primary->setGrades('CP');
                 $primary->setGrades('CE1');
                 $primary->setGrades('CM1');
@@ -86,22 +82,21 @@ use App\Objects\Functions;
                 $college = new College();
 
                 $college->setCity('Le Havre');
-                $college->setSchoolName('Les Ormeaux');
+                $college->setSchool('Les Ormeaux');
                 $college->setGrades('sixième');
                 $college->setGrades('cinquième');
                 $college->setGrades('quatrième');
                 $college->setGrades('troisème');
+                $college->setGrades('première');
 
                 $highSchool = new HighSchool();
 
                 $highSchool->setCity('Le Havre');
-                $highSchool->setSchoolName('Claude Monet');
+                $highSchool->setSchool('Claude Monet');
                 $highSchool->setGrades('seconde');
                 $highSchool->setGrades('première');
                 $highSchool->setGrades('terminale');
 
-                $allSchools = [(array) $primary, (array) $college, (array) $highSchool];
-                var_dump($allSchools);
             ?>
             </div>
         </section>
@@ -111,15 +106,26 @@ use App\Objects\Functions;
         <section class="exercice">
             <h2 class="exercice-ttl">Question 3</h2>
             <p class="exercice-txt">
-                Créer une méthode permettant d'interroger un type d'école pour savoir s'il prend en charge un niveu scolaire.
+                Créer une méthode permettant d'interroger un type d'école pour savoir s'il prend en charge un niveau scolaire.
                 <br>
                 Tester la méthode créée.
             </p>
             <div class="exercice-sandbox">
             <?php
+                $classe = "première";
+                $findSchool = [];
 
-                $functions = new Functions();
-                var_dump($functions->filteredBySchool($allSchools, 'première', 'schoolname'));
+                if(!empty($primary->filteredBySchool($primary->getGrades(), $classe))){
+                    $findSchool [] = $primary->getSchool();
+                }
+                if(!empty($college->filteredBySchool($college->getGrades(), $classe))){
+                    $findSchool [] = $college->getSchool();
+                }
+                if(!empty($highSchool->filteredBySchool($highSchool->getGrades(), $classe))){
+                    $findSchool [] = $highSchool->getSchool();
+                }
+
+                echo "On trouve la classe de $classe dans les écoles suivantes : ".implode(", ", $findSchool);
 
             ?>
             </div>

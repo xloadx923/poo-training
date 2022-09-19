@@ -72,10 +72,10 @@ use App\Objects\Teacher;
                 $teacher1 = new Teacher("Lavanant", "Clément");
                 $teacher2 = new Teacher("Persy", "Damien");
 
-                $teacher1->setSchoolName("Saint Rose");
-                $teacher2->setSchoolName("Saint Joseph");
+                $teacher1->setSchool("Saint Rose");
+                $teacher2->setSchool("Saint Joseph");
 
-                echo $teacher1->getLastName()." : ".$teacher1->getSchoolName()."<br>".$teacher2->getLastName()." : ".$teacher2->getSchoolName();
+                echo $teacher1->getLastName()." : ".$teacher1->getSchool()."<br>".$teacher2->getLastName()." : ".$teacher2->getSchool();
             ?>
             </div>
         </section>
@@ -95,8 +95,8 @@ use App\Objects\Teacher;
                 $teacher1 = new Teacher("Lavanant", "Clément");
                 $teacher2 = new Teacher("Persy", "Damien");
 
-                $teacher1->setSchoolName("Saint Rose");
-                $teacher2->setSchoolName("Saint Joseph");
+                $teacher1->setSchool("Saint Rose");
+                $teacher2->setSchool("Saint Joseph");
 
                 $teacher1->addSubject("anglais");
                 $teacher1->addSubject("histoire");

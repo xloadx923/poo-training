@@ -2,18 +2,16 @@
 
 namespace App\Objects;
 
-class School extends Student{
+class School{
 
-    public string $city;
-    public string $schoolname;
-
-    public function __construct(string $city = "", string $schoolname = "") {
-        $this->city = $city;
-        $this->schoolname = $schoolname;
+    static function filteredBySchool(array $merging, string $search, string $key):array {
+        foreach ($merging as $school){
+            $filter = array_filter(array_values($school['grades']),fn($s)=>$s == $search);
+            if(!empty($filter)){
+                return [implode("",$filter), $school[$key]];
+            }
+        }
     }
-
-    public function getCity():string { return $this->city;}
-    public function setCity(string $city) { $this->city = $city;}
 
 }
 

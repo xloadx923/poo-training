@@ -3,28 +3,21 @@
 namespace App\Objects;
 use DateTime;
 
-class Student{
+class Student extends Person{
 
-    public string $schoolname;
-    public string $lastname;
-    public string $firstname;
     public DateTime $birthday;
     public string $grade;
     public int $age = 0;
-    private static string $presentation = "Bonjour, je m'appelle _lastname_ _firstname_, j'ai _age_ ans et je vais à l'école _school_ en classe de _grade_.<br/>";
+    protected static string $introduction = "Bonjour, je m'appelle ##firstname## ##lastname##, j'ai ##age## ans et je vais à l'école ##school## en class de ##grade##.";
 
     public function __construct(string $lastname, string $firstname, DateTime $birthday, string $grade){
+        parent::__construct($lastname, $firstname, "");
         $this->lastname = $lastname;
         $this->firstname = $firstname;
         $this->birthday = $birthday;
         $this->grade = $grade;
     }
 
-    public function getLastName():string                { return $this->lastname; }
-    public function setLastName(string $lastname):void  { $this->lastname = $lastname; }
-
-    public function getFirstName():string               { return $this->firstname; }
-    public function setFirstName(string $firstname):void{ $this->firstname = $firstname; }
 
     public function getBirthday():DateTime              { return $this->birthday; }
     public function setBirthday(DateTime $birthday)     { $this->birthday = $birthday; }
@@ -40,24 +33,14 @@ class Student{
         $this->birthAge =  date_diff($d2,$d1)->y;
     }
 
-    public function getSchoolName():string      { return $this->schoolname; }
-    public function setSchoolName($schoolname)  { $this->schoolname = $schoolname; }
-
-    public function getPresentation():string      { return self::$presentation; }
-    public function setPresentation($presentation){ self::$presentation = $presentation; }
-
     public function showPresentation():string {
-        $search =[
-            "_lastname_"  => $this->getLastName(),
-            "_firstname_" => $this->getFirstName(),
-            "_age_"       => $this->getBirthAge(),
-            "_school_"    => $this->getSchoolName(),
-            "_grade_"     => $this->getGrade()
-        ];
-        return preg_replace(
-            array_map(fn($s)=>"/$s/", array_keys($search)),
-            array_values($search),
-            self::getPresentation() );
+        return self::buildIntroduction([
+            "lastname"  => $this->getLastName(),
+            "firstname" => $this->getFirstName(),
+            "age"       => $this->getBirthAge(),
+            "school"    => $this->getSchool(),
+            "grade"     => $this->getGrade()
+        ]);
     }
 }
 
