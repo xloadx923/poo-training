@@ -1,8 +1,14 @@
 <?php
 
-require 'App/Autoloader.php';
-
-\Infos\Autoloader::register();
+// require 'App/Autoloader.php';
+// \Infos\Autoloader::register();
+spl_autoload_register();
+use App\Objects\Student;
+use App\Objects\School;
+use App\Objects\Primary;
+use App\Objects\College;
+use App\Objects\HighSchool;
+use App\Objects\Functions;
 
 ?>
 
@@ -44,7 +50,7 @@ require 'App/Autoloader.php';
             <div class="exercice-sandbox">
             <?php
 
-                $school = new \Infos\School();
+                $school = new School();
                 $school->setSchoolName("Les Ormeaux");
                 $school->setCity("Le Havre");
 
@@ -68,7 +74,7 @@ require 'App/Autoloader.php';
             <div class="exercice-sandbox">
             <?php
 
-                $primary = new \Infos\Primary();
+                $primary = new Primary();
 
                 $primary->setCity('Le Havre');
                 $primary->setSchoolName('Jehan De Grouchy');
@@ -77,7 +83,7 @@ require 'App/Autoloader.php';
                 $primary->setGrades('CM1');
                 $primary->setGrades('CM2');
 
-                $college = new \Infos\College();
+                $college = new College();
 
                 $college->setCity('Le Havre');
                 $college->setSchoolName('Les Ormeaux');
@@ -86,7 +92,7 @@ require 'App/Autoloader.php';
                 $college->setGrades('quatrième');
                 $college->setGrades('troisème');
 
-                $highSchool = new \Infos\HighSchool();
+                $highSchool = new HighSchool();
 
                 $highSchool->setCity('Le Havre');
                 $highSchool->setSchoolName('Claude Monet');
@@ -94,28 +100,8 @@ require 'App/Autoloader.php';
                 $highSchool->setGrades('première');
                 $highSchool->setGrades('terminale');
 
-                function mergeArray($array):array {
-                    $merge = [];
-                    foreach( $array as $nextArray){
-                        $merge[] = $nextArray;
-                    }
-                    return $merge;
-                }
-
-                function filteredBySchool(array $merging, string $search, string $key):array {
-                    $returnmap = [];
-                    foreach ($merging as $school){
-                        $map = array_filter(array_values($school['grades']),fn($s)=>$s == $search);
-                        if(!empty($map)){
-                            $returnmap = $map;
-                            $returnmap[] = $school[$key];
-                            return $returnmap;
-                        }
-                    }
-                }
-                $merging = mergeArray([(array) $primary, (array) $college, (array) $highSchool]);
-
-                var_dump(filteredBySchool($merging, 'première', 'schoolname'));
+                $allSchools = [(array) $primary, (array) $college, (array) $highSchool];
+                var_dump($allSchools);
             ?>
             </div>
         </section>
@@ -130,7 +116,12 @@ require 'App/Autoloader.php';
                 Tester la méthode créée.
             </p>
             <div class="exercice-sandbox">
+            <?php
 
+                $functions = new Functions();
+                var_dump($functions->filteredBySchool($allSchools, 'première', 'schoolname'));
+
+            ?>
             </div>
         </section>
 

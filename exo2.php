@@ -1,8 +1,9 @@
 <?php
 
-require 'App/Autoloader.php';
-
-\Infos\Autoloader::register();
+// require 'App/Autoloader.php';
+// \Infos\Autoloader::register();
+spl_autoload_register();
+use App\Objects\Teacher;
 
 ?>
 
@@ -46,8 +47,8 @@ require 'App/Autoloader.php';
             <div class="exercice-sandbox">
                 <?php
 
-                    $teacher1 = new \Infos\Teacher("Lavanant", "Clément");
-                    $teacher2 = new \Infos\Teacher("Persy", "Damien");
+                    $teacher1 = new Teacher("Lavanant", "Clément");
+                    $teacher2 = new Teacher("Persy", "Damien");
 
                     var_dump($teacher1,$teacher2);
                 ?>
@@ -68,8 +69,8 @@ require 'App/Autoloader.php';
             <div class="exercice-sandbox">
             <?php
 
-                $teacher1 = new \Infos\Teacher("Lavanant", "Clément");
-                $teacher2 = new \Infos\Teacher("Persy", "Damien");
+                $teacher1 = new Teacher("Lavanant", "Clément");
+                $teacher2 = new Teacher("Persy", "Damien");
 
                 $teacher1->setSchoolName("Saint Rose");
                 $teacher2->setSchoolName("Saint Joseph");
@@ -91,8 +92,8 @@ require 'App/Autoloader.php';
             <div class="exercice-sandbox">
                 <?php
 
-                $teacher1 = new \Infos\Teacher("Lavanant", "Clément");
-                $teacher2 = new \Infos\Teacher("Persy", "Damien");
+                $teacher1 = new Teacher("Lavanant", "Clément");
+                $teacher2 = new Teacher("Persy", "Damien");
 
                 $teacher1->setSchoolName("Saint Rose");
                 $teacher2->setSchoolName("Saint Joseph");

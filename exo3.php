@@ -1,8 +1,10 @@
 <?php
 
-require 'App/Autoloader.php';
+// require 'App/Autoloader.php';
+// \Infos\Autoloader::register();
+spl_autoload_register();
+use App\Objects\Student;
 
-\Infos\Autoloader::register();
 
 ?>
 <!DOCTYPE html>
@@ -68,7 +70,7 @@ require 'App/Autoloader.php';
             </p>
             <div class="exercice-sandbox">
             <?php
-                $student = new \Infos\Student("Polo", "Marco",new DateTime( "1995-09-12"), "Bac Pro");
+                $student = new Student("Polo", "Marco",new DateTime( "1995-09-12"), "Bac Pro");
 
                 $now = new DateTime();
                 $student->setBirthday(new DateTime("1997-08-01"));
