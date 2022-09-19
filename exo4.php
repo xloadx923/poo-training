@@ -112,7 +112,7 @@ use App\Objects\School;
             <div class="exercice-sandbox">
             <?php
 
-                var_dump(School::filteredBySchool($allSchools, 'première', 'school'));
+                echo "On trouve la classe de ".implode(" dans l'école ",(School::filteredBySchool($allSchools, 'première', 'school')));
 
             ?>
             </div>

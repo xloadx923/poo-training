@@ -9,10 +9,10 @@ class School{
     public array $grades;
 
     static function filteredBySchool(array $merging, string $search, string $key):array {
-        foreach ($merging as $key=>$school){
+        foreach ($merging as $school){
             $filter = array_filter(array_values($school['grades']),fn($s)=>$s == $search);
             if(!empty($filter)){
-                return ["grade" => implode("",$filter), "school" => $key];
+                return ["grade" => implode("",$filter), "school" => $school[$key]];
             }
         }
     }
