@@ -1,3 +1,12 @@
+<?php
+
+// require 'App/Autoloader.php';
+// \Infos\Autoloader::register();
+spl_autoload_register();
+use App\Objects\Student;
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,21 +33,21 @@
                 </ul>
             </nav>
         </header>
-        
+
         <!-- QUESTION 1 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 1</h2>
-            <p class="exercice-txt"> 
+            <p class="exercice-txt">
                 Créer les dossiers "App/Objects" et y ajouter un fichier PHP pour chacune des classes créées lors des exercices précédents.
                 <br>
                 Assurer le fonctionnement du code des exercices précédents.
             </p>
             <div class="exercice-sandbox">
-                
+
             </div>
         </section>
-        
-        
+
+
         <!-- QUESTION 2 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 2</h2>
@@ -48,11 +57,11 @@
                 Automatiser l'import des fichiers en utilisant les namespaces.
             </p>
             <div class="exercice-sandbox">
-                
+
             </div>
         </section>
-        
-        
+
+
         <!-- QUESTION 3 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 3</h2>
@@ -60,7 +69,19 @@
                 Mutualiser le code commun des 2 classes grâce à l'héritage.
             </p>
             <div class="exercice-sandbox">
-                
+            <?php
+                $student = new Student("Polo", "Marco",new DateTime( "1995-09-12"), "Bac Pro");
+
+                $now = new DateTime();
+                $student->setBirthday(new DateTime("1997-08-01"));
+                $student->setSchool("François 1er");
+
+                $birthday = $student->getBirthday();
+                $student->setBirthAge($birthday, $now);
+
+                echo $student->showPresentation();
+
+            ?>
             </div>
         </section>
 
