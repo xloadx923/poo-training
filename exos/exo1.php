@@ -173,7 +173,7 @@ class Student1_6{
     public function setSchoolName($schoolname)  { $this->schoolname = $schoolname; }
 
     public function setPresentation():string {
-        return self::$paragraph = "Bonjour, je m'appelle ".$this->getLastName()." ".$this->getFirstName().", j'ai ".$this->getAge()." ans et je vais à l'école ".$this->getSchoolName()." en classe de ".$this->getLevel().".<br/>";
+        return "Bonjour, je m'appelle ".$this->getLastName()." ".$this->getFirstName().", j'ai ".$this->getAge()." ans et je vais à l'école ".$this->getSchoolName()." en classe de ".$this->getLevel().".<br/>";
     }
 }
 
